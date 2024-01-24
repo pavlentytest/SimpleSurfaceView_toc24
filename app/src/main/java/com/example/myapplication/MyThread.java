@@ -16,7 +16,7 @@ public class MyThread extends Thread {
     }
 
     public long getTime() {
-        return System.nanoTime()/1000;
+        return System.currentTimeMillis();
     }
 
     MyThread(SurfaceHolder holder) {
@@ -35,12 +35,12 @@ public class MyThread extends Thread {
         while(flag) {
             long currentTime = getTime();
             long elapsedTime = currentTime - redrawTime;
-            if(elapsedTime < 1000000) {
+            if(elapsedTime < 800) {
                 continue;
             }
             // блокировка Canvas для отрисовки
             canvas = holder.lockCanvas();
-            canvas.drawColor(Color.BLACK); // Фон
+         //   canvas.drawColor(Color.BLACK); // Фон
             canvas.drawCircle(canvas.getWidth()/2,
                                 canvas.getHeight()/2,
                     (float)(300*Math.random()),paint);
